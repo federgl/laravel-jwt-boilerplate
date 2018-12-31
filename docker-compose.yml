@@ -1,0 +1,107 @@
+version: '3'
+services:
+
+  #Jenkins container
+  jenkins:
+    image: 'jenkins/jenkins:lts'
+    container_name: jenkins
+    restart: unless-stopped
+    tty: true
+    labels:
+      kompose.service.type: nodeport
+    ports:
+      - '5000:8080'
+      - '8443:8443'
+    volumes:
+      - 'jenkins_data:/jenkins_config'
+    networks:
+      - backend-containers-network
+
+  #PHP container
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: federglobant/laravel-nginx-jwt
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    links:
+      - db
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./config/server-settings/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - backend-containers-network
+
+  #Nginx container
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8080:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./config/server-settings/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - backend-containers-network
+
+  #MySQL container (Main DB)
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: laraveljwt
+      MYSQL_USER: root
+      MYSQL_PASSWORD: your_mysql_root_password
+      MYSQL_ROOT_PASSWORD: your_mysql_root_password
+      SERVICE_TAGS: dev
+      SERVICE_NAME: 
+    
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./config/server-settings/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - backend-containers-network
+
+#Testing db
+  db_test:
+   image: mysql:5.7.22
+   container_name: db_test
+   restart: unless-stopped
+   tty: true
+   ports:
+      - "3307:3306" 
+   environment:
+      MYSQL_ROOT_PASSWORD: your_mysql_root_password
+      MYSQL_DATABASE: laravel_test
+      MYSQL_USER: root
+      MYSQL_PASSWORD: your_mysql_root_password
+   volumes:
+      - dbdata:/var/lib/mysql
+      - ./config/server-settings/mysql/my.cnf:/etc/mysql/my.cnf
+   networks:
+      - backend-containers-network
+
+#Network to link containers between each other
+networks:
+  backend-containers-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
+  jenkins_data:
+    driver: local

@@ -1,0 +1,81 @@
+Feature\App\Http\Controllers\API\User\v1\Auth\ChangePasswordController
+ [x] Change password
+
+Feature\App\Http\Controllers\API\User\v1\Auth\EmailVerifyController
+ [x] validates that email verify token can be used only once. Reattempting will show error.
+ [x] validates that token parameter is passed in request.
+ [x] generate error when invalid token as number is provided
+ [x] generate error when invalid token is provided
+ [x] generate password reset email for existing user in system
+ [x] generate password reset email for existing user in system with data set #0
+ [x] generate password reset email for existing user in system with data set #1
+ [x] generate password reset email for existing user in system
+
+Feature\App\Http\Controllers\API\User\v1\Auth\ForgotPasswordController
+ [x] generate password reset email for existing user in system
+ [x] generate validation error when email address is given with more than 64 characters for domain name
+ [x] generate validation error when email address is given as numeric data
+ [x] generate validation error when email address is partially given
+ [x] generate validation error when non existent email address is provided to create forgot password request
+ [x] validates that email parameter value null in request body with data set #0
+ [x] validates that email parameter value null in request body with data set #1
+ [x] validates that email parameter value null in request body with data set #2
+ [x] validates that missing email parameter in request body
+
+Feature\App\Http\Controllers\API\User\v1\Auth\LoginController
+ [x] Invoke successful login
+ [x] Invoke incomplete email login
+ [x] Invoke incomplete password login
+ [x] Invoke incomplete login
+ [x] Invoke incorrect email login
+ [x] Invoke incorrect password login
+
+Feature\App\Http\Controllers\API\User\v1\Auth\LogoutController
+ [x] Invoke successful user logout
+ [x] Invoke already logged out token
+ [x] Invoke without token
+ [x] Invoke without auth param
+ [x] Invoke incorrect token
+
+Feature\App\Http\Controllers\API\User\v1\Auth\ResetPasswordController
+ [x] validates that reset password fails for wrong toke or email data.
+ [x] validates that token length should not be greater than 64 characters
+ [x] validates that token parameter missing in request body
+ [x] validates that token length should not be smaller than 64 characters
+ [x] validates that token is in string format
+ [x] generates error when email address domain name in greater than 64 characters.
+ [x] generates error when email address is not of type string
+ [x] generates error when email address username is missing
+ [x] generates error when email address username in greater than 64 characters.
+ [x] generate warning when email field is not passed in request
+ [x] validates that password length is at least 6 characters
+ [x] generate warning when password datatype is not string
+ [x] generate error when password parameter is not passed in request
+ [x] validates that all parameter values are null in request body with data set #0
+ [x] validates that all parameter values are null in request body with data set #1
+ [x] validates that all parameter values are null in request body with data set #2
+ [x] generates validation when all request parameter are missing
+
+Feature\App\Http\Controllers\API\User\v1\Auth\SignupController
+ [x] registers a new user in system.
+ [x] validates that email address is of string type
+ [x] validates that email format is valid
+ [x] Validates that email address parameter is required in request
+ [x] generates error when email address is provided with user name with invalid length
+ [x] validates that name parameter is not missing in parameter
+ [x] validates that name is of data type string
+ [x] validates that name parameter length not grater than 256
+ [x] Invoke validate name parameter length not shorter than specified limit
+ [x] validates that password field is of type string
+ [x] validates that password field is provided in request
+ [x] validates that password length is at least 6 characters
+ [x] validate that
+ [x] register a user and validates that email verification record exists
+ [x] Invoke with all empty values with data set #0
+ [x] Invoke with all empty values with data set #1
+ [x] Invoke with all empty values with data set #2
+ [x] generate error when all of the request parameters are missing in request body.
+
+Feature\Example
+ [x] Basic test
+

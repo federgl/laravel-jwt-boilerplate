@@ -1,0 +1,381 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel JWT Authentication Core Structure",
+        "description": "Description for base laravel project with JWT auth included.",
+        "contact": {
+            "email": "federico.reale@globant.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://laravel.local.com:8080",
+            "description": "Swagger OpenApi dynamic host server"
+        },
+        {
+            "url": "http://laravel.local.com:8080",
+            "description": "Laravel base project / Swagger OpenApi Server"
+        }
+    ],
+    "paths": {
+        "/api/auth/user/changepsw": {
+            "post": {
+                "tags": [
+                    "Security"
+                ],
+                "summary": "Allows the user to change their password from inside the site.",
+                "description": "Password change",
+                "operationId": "authuserLogin",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "Encrypted Token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "old_password",
+                        "in": "query",
+                        "description": "Old Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "new_password",
+                        "in": "query",
+                        "description": "New Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Token is not present or not valid"
+                    },
+                    "422": {
+                        "description": "Old password is invalid"
+                    },
+                    "500": {
+                        "description": "An error ocurred while updating the password"
+                    },
+                    "200": {
+                        "description": "Password updated successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/user/register/verify/{token}": {
+            "get": {
+                "tags": [
+                    "Security"
+                ],
+                "summary": "verifies user email address and verified on",
+                "description": "email  verification",
+                "operationId": "authuserLogin",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "Encrypted Token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessible Entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/user/forgot/password": {
+            "post": {
+                "tags": [
+                    "Security"
+                ],
+                "summary": "User can request to reset their passwords.",
+                "description": "User Forgot Password",
+                "operationId": "authuserForgotPassword",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email Address",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessible Entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/user/login": {
+            "post": {
+                "tags": [
+                    "Security"
+                ],
+                "summary": "Authenticates user using username and password",
+                "description": "Authenticate user",
+                "operationId": "authuserLogin",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email Address",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessible Entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/user/logout": {
+            "post": {
+                "tags": [
+                    "Security"
+                ],
+                "summary": "It allows user to invalidate its tokens so new login will be required",
+                "description": "Logout user",
+                "operationId": "authuserLogout",
+                "responses": {
+                    "200": {
+                        "description": "{'success': true}"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/user/forgot/password/reset": {
+            "post": {
+                "tags": [
+                    "Security"
+                ],
+                "summary": "It allows user to reset/change their passwords. ",
+                "description": "Reset Password",
+                "operationId": "authuserForgotPasswordReset",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Token string received in email by user.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email Address",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "query",
+                        "description": "Password confirmation string",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessible Entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/user/register": {
+            "post": {
+                "tags": [
+                    "Security"
+                ],
+                "summary": "Register a new user in the system.",
+                "description": "user registration",
+                "operationId": "authuserRegister",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "user Name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email Address",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessible Entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "Use of access+refresh token generated based on username/password & server side encryption key",
+                "name": "Token Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Security",
+            "description": "Authorization endpoints"
+        }
+    ],
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}

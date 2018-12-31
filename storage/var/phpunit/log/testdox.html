@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Test Documentation</title>
+        <style>
+            body {
+                text-rendering: optimizeLegibility;
+                font-variant-ligatures: common-ligatures;
+                font-kerning: normal;
+                margin-left: 2em;
+            }
+
+            body > ul > li {
+                font-family: Source Serif Pro, PT Sans, Trebuchet MS, Helvetica, Arial;
+                font-size: 2em;
+            }
+
+            h2 {
+                font-family: Tahoma, Helvetica, Arial;
+                font-size: 3em;
+            }
+
+            ul {
+                list-style: none;
+                margin-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 id="Tests\Feature\App\Http\Controllers\API\User\v1\Auth\ChangePasswordControllerTest">Feature\App\Http\Controllers\API\User\v1\Auth\ChangePasswordController</h2>
+        <ul>
+            <li style="color: #555753;">✓ Change password</li>
+        </ul>
+        <h2 id="Tests\Feature\App\Http\Controllers\API\User\v1\Auth\EmailVerifyControllerTest">Feature\App\Http\Controllers\API\User\v1\Auth\EmailVerifyController</h2>
+        <ul>
+            <li style="color: #555753;">✓ validates that email verify token can be used only once. Reattempting will show error.</li>
+            <li style="color: #555753;">✓ validates that token parameter is passed in request.</li>
+            <li style="color: #555753;">✓ generate error when invalid token as number is provided</li>
+            <li style="color: #555753;">✓ generate error when invalid token is provided</li>
+            <li style="color: #555753;">✓ generate password reset email for existing user in system</li>
+            <li style="color: #555753;">✓ generate password reset email for existing user in system with data set #0</li>
+            <li style="color: #555753;">✓ generate password reset email for existing user in system with data set #1</li>
+            <li style="color: #555753;">✓ generate password reset email for existing user in system</li>
+        </ul>
+        <h2 id="Tests\Feature\App\Http\Controllers\API\User\v1\Auth\ForgotPasswordControllerTest">Feature\App\Http\Controllers\API\User\v1\Auth\ForgotPasswordController</h2>
+        <ul>
+            <li style="color: #555753;">✓ generate password reset email for existing user in system</li>
+            <li style="color: #555753;">✓ generate validation error when email address is given with more than 64 characters for domain name</li>
+            <li style="color: #555753;">✓ generate validation error when email address is given as numeric data</li>
+            <li style="color: #555753;">✓ generate validation error when email address is partially given</li>
+            <li style="color: #555753;">✓ generate validation error when non existent email address is provided to create forgot password request</li>
+            <li style="color: #555753;">✓ validates that email parameter value null in request body with data set #0</li>
+            <li style="color: #555753;">✓ validates that email parameter value null in request body with data set #1</li>
+            <li style="color: #555753;">✓ validates that email parameter value null in request body with data set #2</li>
+            <li style="color: #555753;">✓ validates that missing email parameter in request body</li>
+        </ul>
+        <h2 id="Tests\Feature\App\Http\Controllers\API\User\v1\Auth\LoginControllerTest">Feature\App\Http\Controllers\API\User\v1\Auth\LoginController</h2>
+        <ul>
+            <li style="color: #555753;">✓ Invoke successful login</li>
+            <li style="color: #555753;">✓ Invoke incomplete email login</li>
+            <li style="color: #555753;">✓ Invoke incomplete password login</li>
+            <li style="color: #555753;">✓ Invoke incomplete login</li>
+            <li style="color: #555753;">✓ Invoke incorrect email login</li>
+            <li style="color: #555753;">✓ Invoke incorrect password login</li>
+        </ul>
+        <h2 id="Tests\Feature\App\Http\Controllers\API\User\v1\Auth\LogoutControllerTest">Feature\App\Http\Controllers\API\User\v1\Auth\LogoutController</h2>
+        <ul>
+            <li style="color: #555753;">✓ Invoke successful user logout</li>
+            <li style="color: #555753;">✓ Invoke already logged out token</li>
+            <li style="color: #555753;">✓ Invoke without token</li>
+            <li style="color: #555753;">✓ Invoke without auth param</li>
+            <li style="color: #555753;">✓ Invoke incorrect token</li>
+        </ul>
+        <h2 id="Tests\Feature\App\Http\Controllers\API\User\v1\Auth\ResetPasswordControllerTest">Feature\App\Http\Controllers\API\User\v1\Auth\ResetPasswordController</h2>
+        <ul>
+            <li style="color: #555753;">✓ validates that reset password fails for wrong toke or email data.</li>
+            <li style="color: #555753;">✓ validates that token length should not be greater than 64 characters</li>
+            <li style="color: #555753;">✓ validates that token parameter missing in request body</li>
+            <li style="color: #555753;">✓ validates that token length should not be smaller than 64 characters</li>
+            <li style="color: #555753;">✓ validates that token is in string format</li>
+            <li style="color: #555753;">✓ generates error when email address domain name in greater than 64 characters.</li>
+            <li style="color: #555753;">✓ generates error when email address is not of type string</li>
+            <li style="color: #555753;">✓ generates error when email address username is missing</li>
+            <li style="color: #555753;">✓ generates error when email address username in greater than 64 characters.</li>
+            <li style="color: #555753;">✓ generate warning when email field is not passed in request</li>
+            <li style="color: #555753;">✓ validates that password length is at least 6 characters</li>
+            <li style="color: #555753;">✓ generate warning when password datatype is not string</li>
+            <li style="color: #555753;">✓ generate error when password parameter is not passed in request</li>
+            <li style="color: #555753;">✓ validates that all parameter values are null in request body with data set #0</li>
+            <li style="color: #555753;">✓ validates that all parameter values are null in request body with data set #1</li>
+            <li style="color: #555753;">✓ validates that all parameter values are null in request body with data set #2</li>
+            <li style="color: #555753;">✓ generates validation when all request parameter are missing</li>
+        </ul>
+        <h2 id="Tests\Feature\App\Http\Controllers\API\User\v1\Auth\SignupControllerTest">Feature\App\Http\Controllers\API\User\v1\Auth\SignupController</h2>
+        <ul>
+            <li style="color: #555753;">✓ registers a new user in system.</li>
+            <li style="color: #555753;">✓ validates that email address is of string type</li>
+            <li style="color: #555753;">✓ validates that email format is valid</li>
+            <li style="color: #555753;">✓ Validates that email address parameter is required in request</li>
+            <li style="color: #555753;">✓ generates error when email address is provided with user name with invalid length</li>
+            <li style="color: #555753;">✓ validates that name parameter is not missing in parameter</li>
+            <li style="color: #555753;">✓ validates that name is of data type string</li>
+            <li style="color: #555753;">✓ validates that name parameter length not grater than 256</li>
+            <li style="color: #555753;">✓ Invoke validate name parameter length not shorter than specified limit</li>
+            <li style="color: #555753;">✓ validates that password field is of type string</li>
+            <li style="color: #555753;">✓ validates that password field is provided in request</li>
+            <li style="color: #555753;">✓ validates that password length is at least 6 characters</li>
+            <li style="color: #555753;">✓ validate that</li>
+            <li style="color: #555753;">✓ register a user and validates that email verification record exists</li>
+            <li style="color: #555753;">✓ Invoke with all empty values with data set #0</li>
+            <li style="color: #555753;">✓ Invoke with all empty values with data set #1</li>
+            <li style="color: #555753;">✓ Invoke with all empty values with data set #2</li>
+            <li style="color: #555753;">✓ generate error when all of the request parameters are missing in request body.</li>
+        </ul>
+        <h2 id="Tests\Feature\ExampleTest">Feature\Example</h2>
+        <ul>
+            <li style="color: #555753;">✓ Basic test</li>
+        </ul>
+    </body>
+</html>
