@@ -33,7 +33,7 @@ Ensure the following requirements are met in order to run the project properly:
 
 # Instructions (on linux environments):
 
-1) Make sure docker and docker compose are installed on your host system.
+1) Make sure docker and docker compose are installed on your host system, and that docker daemon is running.
 2) Clone this repository
 3) Go inside ```laravel-jwt-starter``` folder
 4) Copy .env.example into .env
