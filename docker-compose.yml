@@ -89,7 +89,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: your_mysql_root_password
    volumes:
-      - dbdata:/var/lib/mysql
+      - test_dbdata:/var/lib/mysql
       - ./config/server-settings/mysql/my.cnf:/etc/mysql/my.cnf
    networks:
       - backend-containers-network
@@ -101,7 +101,9 @@ networks:
 
 #Volumes
 volumes:
-  dbdata:
+  main_dbdata:
+    driver: local
+  test_dbdata:
     driver: local
   jenkins_data:
     driver: local
